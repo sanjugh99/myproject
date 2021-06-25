@@ -1,0 +1,412 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Login-Lets Discuss</title>
+<link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- <script src="{% static 'js.js' %}"></script> -->
+<link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ 
+  <style>
+    
+body {
+  background-size: cover ;
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    color: black;
+    font-size: 4rem;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 100vh;
+
+}
+span{
+    opacity: 0;
+    transition:all 1s ease ;
+}
+span.fade{
+  opacity: 2;
+} 
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+user-select: none;
+}
+
+.content{
+position: absolute;
+top: 50%;
+left: 50%;
+z-index: 9;
+text-align: center;
+padding: 60px 32px;
+width: 350px;
+transform: translate(-50%,-50%);
+background: rgba(255,255,255,0.04);
+box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+}
+.content header{
+color: white;
+font-size: 33px;
+font-weight: 600;
+margin: 0 0 35px 0;
+font-family: 'Montserrat',sans-serif;
+}
+.field{
+position: relative;
+height: 45px;
+width: 100%;
+display: flex;
+background: rgba(255,255,255,0.94);
+}
+.field span{
+color: #222;
+width: 40px;
+line-height: 45px;
+}
+.field input{
+height: 100%;
+width: 100%;
+background: transparent;
+border: none;
+outline: none;
+color: #222;
+font-size: 16px;
+font-family: 'Poppins',sans-serif;
+}
+.space{
+margin-top: 16px;
+}
+.show{
+position: absolute;
+right: 13px;
+font-size: 13px;
+font-weight: 700;
+color: #222;
+display: none;
+cursor: pointer;
+font-family: 'Montserrat',sans-serif;
+}
+.pass-key:valid ~ .show{
+display: block;
+}
+.pass{
+text-align: left;
+margin: 10px 0;
+}
+.pass a{
+color: white;
+text-decoration: none;
+font-family: 'Poppins',sans-serif;
+}
+.pass:hover a{
+text-decoration: underline;
+}
+.field input[type="submit"]{
+background: #ff4646;
+border: 1px solid #ff4646;
+color: white;
+font-size: 18px;
+letter-spacing: 1px;
+font-weight: 600;
+cursor: pointer;
+font-family: 'Montserrat',sans-serif;
+}
+.field a input[type="submit"]:hover{
+background: #ff4646;
+}
+.login{
+color: white;
+margin: 20px 0;
+font-family: 'Poppins',sans-serif;
+}
+.links{
+display: flex;
+cursor: pointer;
+color: white;
+margin: 0 0 20px 0;
+}
+
+.links i{
+font-size: 17px;
+}
+i span{
+margin-left: 8px;
+font-weight: 500;
+letter-spacing: 1px;
+font-size: 16px;
+font-family: 'Poppins',sans-serif;
+}
+.signup{
+font-size: 15px;
+color: white;
+font-family: 'Poppins',sans-serif;
+}
+.signup a{
+color: #ee4b4b;
+text-decoration: none;
+}
+.signup a:hover{
+text-decoration: underline;
+}
+
+</style>
+
+</head>
+<body style=" background-image: url(https://cdn.dribbble.com/users/214929/screenshots/5750616/search-_-close-2.gif)">
+    <div class="bg-img">
+      <div class="content">
+        <header style="color: black;"><h2><b>Login</b></h2></header>
+        {% for message in messages %}
+           <h3 style="color:white">{{message}}</h3>
+        {% endfor %}  
+  
+        <form  action='login' method="POST">
+         {% csrf_token %}
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input type="text" required placeholder="username" name="username">
+          </div>
+<div class="field space">
+            <span class="fa fa-lock"></span>
+            <input type="password" class="pass-key" required placeholder="Password" name="password">
+            <span class="show">SHOW</span>
+          </div>
+<br>
+<hr>
+<div class="field">
+            <input type="submit" value="LOGIN">
+          </div>
+</form>
+<div>
+
+</div>
+
+<div class="signup" style="color: black;">
+Don't have account?
+          <a href="signin">Create an account.</a>
+        </div>
+</div>
+</div>
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: ('https://visitmeatwp.files.wordpress.com/2020/03/giphy-8.gif');
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("q.jpg");
+  
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<h2>Log-In to Let's Discuss </h2>
+<div class="bg-img">
+    <center>
+  <form action="/action_page.php" class="container">
+    <h1>Login</h1>
+
+    <label for="email"><b></b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b></b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+  </form>
+    </center>
+</div>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- {% load static %}
+{% static "images" as baseUrl %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Discuss Anywhere</title>
+ 
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  {% comment %} <script src="{% static 'js.js' %}"></script> {% endcomment %}
+<link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+  
+
+</head>
+<body style=" background-image: url({% static '/img/home.gif' %})">
+    <div class="bg-img">
+      <div class="content">
+        <header>Login Form</header>
+        {% for message in messages %}
+           <h3 style="color:white">{{message}}</h3>
+        {% endfor %}  
+  
+        <form  action='login' method="POST">
+         {% csrf_token %}
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input type="text" required placeholder="username" name="username">
+          </div>
+<div class="field space">
+            <span class="fa fa-lock"></span>
+            <input type="password" class="pass-key" required placeholder="Password" name="password">
+            <span class="show">SHOW</span>
+          </div>
+<div class="pass">
+            <a href="forgot">Forgot Password?</a>
+          </div>
+<div class="field">
+            <input type="submit" value="LOGIN">
+          </div>
+</form>
+<div>
+
+</div>
+<div class="login">
+Or login with</div>
+<div class="links">
+          <div class="facebook">
+            <i class="fab fa-facebook-f"><span>Facebook</span><h4>facebook</h4></i>
+          </div>
+<div class="instagram">
+            <i class="fab fa-instagram"><span>Instagram</span><h4>instagram</h4></i>
+          </div>
+</div>
+<div class="signup">
+Don't have account?
+          <a href="signin">Sign in Now</a>
+        </div>
+</div>
+</div>
+
+
+</body>
+
+
+
+</html> -->

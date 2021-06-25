@@ -1,0 +1,614 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Let's Discuss</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+  <link rel="stylesheet" href="{%static 'home2.css'%}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function (){
+$("#comment").click(function(){
+$("#panel").toggle("slow");
+});
+});
+</script>
+  <style>
+    @media screen and (min-width: 480px)
+      body, html {
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      * {box-sizing: border-box;}
+      
+      /* Button used to open the chat form - fixed at the bottom of the page */
+      .open-button {
+        background-color: rgb(162, 30, 30);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 70px;
+      }
+      
+      /* The popup chat - hidden by default */
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+      }
+      
+      /* Add styles to the form container */
+      .form-container {
+        max-width: 250px;
+        padding: 10px;
+        background-color: white;
+      }
+      
+      /* Full-width textarea */
+      .form-container textarea {
+        width: 90%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        resize: none;
+        min-height: 200px;
+      }
+      
+      /* When the textarea gets focus, do something */
+      .form-container textarea:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      
+      /* Set a style for the submit/send button */
+      .form-container .btn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom:10px;
+        opacity: 0.8;
+      }
+    
+     
+      /* Float four columns side by side */
+      .column {
+        float: left;
+        width: 25%;
+        padding: 0 5px;
+      }
+      
+      .row {margin: 0 -5px;}
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* Responsive columns */
+      @media screen and (max-width: 600px) {
+        .column {
+          width: 100%;
+          display: block;
+          margin-bottom: 10px;
+        }
+      }
+      
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(113, 40, 40, 0.2);
+        padding: 10px;
+        text-align: left;
+        background-color:rgb(29, 27, 27);
+        color: rgb(226, 224, 224);
+        width: 95%;
+      }
+      
+      .fa {font-size:50px;}
+      
+      /* Add a red background color to the cancel button */
+      .form-container .cancel {
+        background-color: red;
+      }
+      
+      /* Add some hover effects to buttons */
+      .form-container .btn:hover, .open-button:hover {
+        opacity: 1;
+      }
+      
+      .header {
+        padding: 100px;
+        text-align: center;
+        background-image:url(https://a.rgbimg.com/users/s/st/starisob/600/qLV2PxS.jpg) ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+      }
+      .header h1 {
+        color: rgb(255, 255, 255);
+        font-size: 73px;
+        
+      }
+      
+      .accordion {
+        background-color: #eee;
+        color: rgb(51, 44, 44);
+        cursor: pointer;
+        padding: 11px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 10px;
+        transition: 0.4s;
+      }
+      
+      .active, .accordion:hover {
+        background-color: rgb(217, 139, 139); 
+      }
+      
+      .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+      }
+      *{
+
+        margin: 0;
+ 
+        padding: 0;
+ 
+        box-sizing: border-box;
+ 
+      }
+ 
+      a{
+ 
+        text-decoration: none;
+ 
+      }
+ 
+ 
+      footer{
+ 
+        background-color: #3a3a3a;
+ 
+        text-align: center;
+ 
+        padding-bottom: 15px;
+ 
+      }
+ 
+ 
+      .footer-links{
+ 
+       display: grid;
+ 
+        grid-template-columns: 1fr 1fr;
+ 
+        color: white;
+ 
+        letter-spacing: 1.5px;
+ 
+        word-spacing: 2px;
+ 
+      }
+ 
+      .menu-title{
+ 
+        margin-bottom: 10px;
+ 
+      }
+ 
+      .menu{
+ 
+        margin-bottom: 20px;
+ 
+        margin-top: 10px;
+ 
+      }
+ 
+      .menu-links ,.other-links{
+ 
+        display: block;
+ 
+        font-family: Roboto;
+ 
+        color: #d5d5d5;
+ 
+        cursor: pointer;
+ 
+      }
+ 
+      .menu-links:hover{
+ 
+        color: #6500ff;
+ 
+      }
+ 
+      .other-links:hover{
+ 
+        color: #6500ff;
+ 
+      }
+ 
+      /* copyright area */
+ 
+      .copyright{
+ 
+        font-size: 10px;
+ 
+        color: white;
+ 
+        letter-spacing: 1.5px;
+ 
+        word-spacing: 2px;
+ 
+      }
+ 
+      .copyright a{
+ 
+        color: #fff;
+ 
+        font-size: 12px;
+ 
+        cursor: pointer;
+ 
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .navbar {
+        overflow: hidden;
+        background-color: rgb(2, 251, 255);
+      }
+      
+      .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: rgb(36, 36, 32);
+      }
+     
+      #panel, #comment{
+        padding: 5px;
+        text-align: center;
+        background-color: rgb(245, 109, 109);
+       
+      }
+      
+      #panel {
+        padding: 50px;
+        display: none;
+ 
+      /* screen change */
+ 
+      @media(max-width :700px){
+ 
+        .footer-links{
+ 
+        grid-template-columns: 1fr;
+ 
+      }
+ 
+      }
+
+      </style>
+</head>
+<body>
+<div class="header">
+    
+    <h1 style="font-family:Monospace;">Welcome to </h1>
+    <h1 style="font-family:Monospace;"> Let's Discuss</h1>
+    <h3>Do you have any question ? Feel free to post below. </h3> 
+    <form class="d-flex">
+      <input  class="form-control me-2" type="search" placeholder="Post your queries here, we will get back to you through an email." aria-label="Search">
+      <button class="btn btn-danger" type="submit">Post</button>
+    </form>
+  </div>
+
+
+  <nav class="navbar navbar-expand-lg navbar-success bg-danger">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Home</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" href="/abt/">About</a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" href="/cont/">Contact</a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" href="/write/">Post</a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" href="/help/">Help</a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link" href="/">Logout</a>
+        </li> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+      </ul>
+    </div>
+  </nav><center>
+      <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div id="box1" ><figure class="snip1559">
+     
+    <figcaption>
+    {% if user.is_authenticated %}
+      <h3 style="font-family: Monospace;"><span><strong> <u>Greetings from Let's Discuss</u></strong></span> Hello <b><i>{{loguser.name}}</i></b>   !  Welcome to Let's Discuss. Now you can post your opinion in our website. Explore all. Hurry up!</h3>
+    {%endif%}
+    </figcaption>
+  </figure></div>
+</center>
+      
+      </div><hr>
+      <div class="col-lg-14">
+     
+      <form action="home" method="POST"  enctype="multipart/form-data">
+          {% csrf_token %} <h1 style="font-family:'times new roman"><center><strong>User Posted Section </strong></center></h1>
+          {{form.media}}
+          {{form.as_p}}
+            
+     
+  
+  {% for img in write%}
+     <div class="card">
+   
+    <div class="card-body">
+      <h3  class="card-title">[Title]: {{img.title}} </h3>
+        <h5>Post at:  {{img.post_at}} IST</h5>
+        
+      </div>
+      </h3> 
+      <h4 class="card-text">
+      <u> Description / Details</u>:  {{img.body | safe}}
+      </h4>
+      <script>
+  function ShowAndHide() {
+      var x = document.getElementById('SectionName');
+      if (x.style.display == 'none') {
+          x.style.display = 'block';
+      } else {
+          x.style.display = 'none';
+      }
+  }
+  </script>
+      </div>
+  </div>
+  {% endfor %}
+  
+ <hr>
+<h1 style="font-family:'times new roman"><center><strong> Recent Trends Section </strong></center></h1>
+
+<button class="accordion"> <h4>Will there be a third wave of Covid?</h4></button>
+<div class="panel">
+  <h4>"A phase three is inevitable, given the higher levels of circulating virus but it is not clear on what time scale this phase three will occur. We should prepare for new waves," K Vijay Raghavan, Principal Scientific Advisor to the Centre, said today.A third Covid-19 wave is inevitable but the timing could not be predicted, the Centre said on Wednesday. “Phase 3 is inevitable, given the levels at which the virus is circulating. But it is not clear at what time scale this will occur.India is in the midst of a raging second wave of COVID-19 and is recording over 300,000 daily coronavirus infections and over 3,000 deaths. According to the World Health Organization (WHO), India has a total of 20.6 million confirmed COVID-19 cases and over 226,000 deaths.</h4>
+  <img src="{% static 'img/covo.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+
+<button class="accordion"> <h4>Is balanced diet same for all persons?</h4></button>
+<div class="panel">
+  <h4>A balanced diet is a diet which supplies all the required nutrients for the healthy functioning of the body in the proper amounts. A balanced diet is individual specific. It cannot be the same for everybody and varies depending upon the age, gender and type of work of an individual.</h4>
+   <img src="{% static 'img/diet.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+
+<button class="accordion"><h4>What to do after B. Tech?</h4></button>
+<div class="panel">
+  <h4>Campus Placement.
+    Plan Further Studies with Specialization ie. M. Tech.
+    Interested in Business and Management i.e., MBA?
+    Adding some expertise or certification - Diploma Courses:
+    Study Abroad:
+    Be your Own Boss - Entrepreneurship:
+    Crack the Civil Services Examination:
+    If you wish to focus on engineering as your core passion, work in an engineering-related sector and conduct researches in engineering, then MS would be the right path for you. Admissions- For admissions in MBA you need an aggregate of 50% from a recognized university in your undergraduate program.</h4>
+    <img src="{% static 'img/b.jpg'%}" alt="Mountains" style="width:60%">
+  </div>
+<button class="accordion"><h4>Should I wear mask while exercising ?</h4></button>
+<div class="panel">
+  <h4>Even when you’re in an area of COVID-19 transmission, masks should not be worn during vigorous physical activity because of the risk of reducing your breathing capacity. No matter how intensely you exercise, keep at least 1 metre away from others, and if you’re indoors, make sure there is adequate ventilation.Masks should be used as part of a comprehensive strategy of measures to suppress transmission and save lives; the use of a mask alone is not sufficient to provide an adequate level of protection against COVID-19.There is some evidence that the COVID-19 virus may lead to intestinal infection and be present in faeces. Approximately 2−10% of cases of confirmed COVID-19 disease presented with diarrhoea (2−4), and two studies detected COVID-19 viral RNA fragments in the faecal matter of COVID-19 patients (5,6). </h4>
+  <img src="{% static 'img/mas.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+<button class="accordion"><h4>What after 10th?</h4></button>
+<div class="panel">
+  <h4>After 10th results are out, there is one common question that strikes in every student’s mind “What next after 10th”? Science, Commerce or Arts? This is a common confusion which most of the students face. Every field has a lot of career opportunities but choosing the right stream which students are interested should be the main concern. 
+ Sachin Tendulkar failed in 10th. But he was very clear what he wanted from his life. 
+    But are we? Few students are very clear about what they want in their life. But there are many students who are confused about their career path. Class 10th is the most important and confusing crossroad of your career. A right decision can help you blossom in your career. And if you make the wrong choice, you will have to face the consequences for the rest of your life. </h4>
+    <img src="{% static 'img/10.jpg'%}" alt="Mountains" style="width:60%">
+  </div>
+<button class="accordion"><h4>What type of questions should come in ips exam?</h4></button>
+<div class="panel">
+  <h4>The Indian Police Services (IPS) comes under the umbrella of the Civil Services Examination (CSE), which is conducted by the Union Public Service Commission (UPSC) annually. ... The Civil Services Examination is among the toughest exam in the country and a lakh of aspirants appear for the exam every year.There will be five papers for IPS Exam. Paper I and II will contain objective type questions. Each paper will contain questions for 200 marks. Paper III will contain descriptive type questions from English Language.</h4>
+  <img src="{% static 'img/upsc.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+<button class="accordion"><h4>Is smoking dangerous during COVID-19 pandemic?</h4></button>
+<div class="panel">
+  <h4>Current evidence suggests that the severity of COVID-19 disease is higher among smokers. Smoking impairs lung function, making it more difficult for the body to fight off respiratory disease due to the new coronavirus.
+
+Tobacco users have a higher risk of being infected with the virus through the mouth while smoking cigarettes or using other tobacco products. If smokers contract the COVID-19 virus, they face a greater risk of getting a severe infection as their lung health is already compromised.</h4>
+<img src="{% static 'img/smoke.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+
+<button class="accordion"><h4>Is Covid-19 airborne?</h4></button>
+<div class="panel">
+  <h4>The US Centers for Disease Control and Prevention (CDC) has recognised that SARS-CoV-2, the virus that causes COVID-19, is airborne and can be transmitted via respiratory fluids, which are fine droplets released during respiration.
+    There is some evidence that the COVID-19 virus may lead to intestinal infection and be present in faeces. Approximately 2−10% of cases of confirmed COVID-19 disease presented with diarrhoea (2−4), and two studies detected COVID-19 viral RNA fragments in the faecal matter of COVID-19 patients (5,6).
+    However, to date only one study has cultured the COVID-19 virus from a single stool specimen (7). There have been no reports of faecal−oral transmission of the COVID-19 virus.
+    From the evidence so far, the COVID-19 virus can be transmitted in ALL AREAS, including areas with hot and humid weather. Regardless of climate, adopt protective measures if you live in, or travel to an area reporting COVID-19. The best way to protect yourself against COVID-19 is by frequently cleaning your hands. By doing this you eliminate viruses that may be on your hands and avoid infection that could occur by then touching your eyes, mouth, and nose.
+  </h4>
+<img src="{% static 'img/air.jpg'%}" alt="Mountains" style="width:60%">
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <button class="open-button" onclick="openForm()">Chat here</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h3>Chat with us</h3>
+
+    <label for="msg"><b>Let's Discuss</b></label>
+    <textarea placeholder="Type message here...." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+ </div>
+
+ <div class="row">
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-user"></i></p>
+      <h3>11+</h3>
+      <p>Partners</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-check"></i></p>
+      <h3>55+</h3>
+      <p>Projects</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-smile-o"></i></p>
+      <h3>100+</h3>
+      <p>Happy Clients</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-coffee"></i></p>
+      <h3>100+</h3>
+      <p>Meetings</p>
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+
+<footer>
+
+
+
+   <div class="footer-links">
+
+     <div class="menu">
+
+       <h4 class="menu-title">Find Us on Social Media</h4>					
+
+       <a href="https://www.facebook.com/sanjugh.guhathakurata" class="menu-links">Facebook</a>
+       <a href="www.indeed.com" class="menu-links">Indeed</a>
+       <a href="https://instagram.com/sanjughvirat2019?utm_medium=copy_link" class="menu-links">Instagram</a>
+
+     </div>
+
+     <div class="menu">
+
+       <h4 class="menu-title">Other Pages</h4>
+
+       <a href="/cont/" class="other-links">Contact Us</a>
+
+       <a href="/abt/" class="other-links">About Us</a>
+
+       <a href="/write/" class="other-links">Post Your Thoughts</a>
+
+       <a href="/help/" class="other-links">How Can I Help You?</a>
+
+     </div>
+
+  </div>
+
+ 
+
+     <p class="copyright">&copy Copyright 2021 | <a href="guhathakuratasanjugh@gmail.com">Sanjugh Guha Thakurata</a></p>
+
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+

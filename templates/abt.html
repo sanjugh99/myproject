@@ -1,0 +1,111 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>About Us-Let's Discuss</h1>
+  <p>Let's Discuss works on the principle of views and upvotes of your response. The more views and votes you collect on your questions, the more people will want to follow you.</p>
+  <p>Let's Discuss is rated for teens ages 13 and older, and it can be safe for kids with adult supervision. Even if Let's Discuss does have moderators, who remove inappropriate content, answers and users, children can come across adult and mature content or negative views on various topics such as religion, politics.</p>
+</div>
+
+<h2 style="text-align:center">Developer-Let's Discuss</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="{% static 'img/sanjugh.jpg'%}" alt="sanjugh" style="width:100%">
+      <div class="container">
+        <h2>Sanjugh Guha Thakurata</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Focused & Determined </p>
+        <p>guhathakuratasanjugh@gmail.com</p>
+        <p>Contact-(+91)9674580163</p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7376.844431229923!2d88.4167340953827!3d22.413128967336313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a026df253499bdf%3A0x2e983a3b5523c078!2sHaraharitala!5e0!3m2!1sen!2sin!4v1623946015638!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    
+      <div class="container">
+        <p><b><i>Address-Haraharitala,Rajpur, Subhasgram, Kolkata-700149</i></b></p>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
